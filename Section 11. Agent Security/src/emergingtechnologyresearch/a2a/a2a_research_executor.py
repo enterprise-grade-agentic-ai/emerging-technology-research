@@ -17,7 +17,6 @@ from a2a.utils import (
     new_artifact
 )
 from a2a.utils.errors import ServerError
-import uuid
 from .. utils.crewUtils import executeApp
 from .. flow import UserProfileIsRequired
 

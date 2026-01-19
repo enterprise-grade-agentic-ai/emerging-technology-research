@@ -43,7 +43,6 @@ def a2aServer(host, port):
                 'Research on impact of quantum computing on cryptography',
                 'I have a followup question on its impact on defence'],
         )
-        
 
         agent_host_url = (
             os.getenv('HOST_OVERRIDE')
@@ -64,7 +63,7 @@ def a2aServer(host, port):
             capabilities=capabilities,
             skills=[skill],
         )
-
+        
         request_handler = DefaultRequestHandler(
             agent_executor=EmergingTechnologyResearchExecutor(),
             task_store=InMemoryTaskStore(),

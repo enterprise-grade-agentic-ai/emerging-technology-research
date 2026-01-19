@@ -34,12 +34,11 @@ aws cognito-idp admin-set-user-password \
  --region us-east-1 \
  --permanent > /dev/null
 
-
 # Authenticate User and capture Access Token
 export BEARER_TOKEN=$(aws cognito-idp initiate-auth \
  --client-id "$CLIENT_ID" \
  --auth-flow USER_PASSWORD_AUTH \
- --auth-parameters USERNAME='manpreet',PASSWORD='helloAgentic' \
+ --auth-parameters USERNAME='agenticLearner',PASSWORD='helloAgentic' \
  --region us-east-1 | jq -r '.AuthenticationResult.AccessToken')
 
 
