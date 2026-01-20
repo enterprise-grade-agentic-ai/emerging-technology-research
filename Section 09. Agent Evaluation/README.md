@@ -1,4 +1,4 @@
-# 🤝 Section 09. Agent Evaluation
+# 📊 Section 09. Agent Evaluation
 
 ## 🎯 Purpose
 This sections focuses on Agent Evaluation . Demoes in the course included online evaluation using `LLM as a judge` as well as `Human Annotation`. There was a demo for inline evaluation as well which was implemented using `Critic Agent` Pattern. This repo is more about `Critic Agent` pattern and its implementation.
