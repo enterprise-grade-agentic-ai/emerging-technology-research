@@ -27,13 +27,6 @@ dependencies = [
     "termcolor>=3.2.0",
 ]
 
-[project.scripts]
-emergingtechnologyresearch = "emergingtechnologyresearch.main:run"
-run_crew = "emergingtechnologyresearch.main:run"
-train = "emergingtechnologyresearch.main:train"
-replay = "emergingtechnologyresearch.main:replay"
-test = "emergingtechnologyresearch.main:test"
-
 [build-system]
 requires = [
     "hatchling",

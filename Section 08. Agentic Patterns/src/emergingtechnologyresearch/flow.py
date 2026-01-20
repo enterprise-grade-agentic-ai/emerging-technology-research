@@ -12,7 +12,6 @@ from . utils.memoryUtils import MemoryUtils
 from . crews.followupCrew import FollowupQuestionCrew
 from . crews.intentCrew import Intent, PromptIntent, IntentAnalyzer
 from . crews.researchCrew import Emergingtechnologyresearch, ResearchReport
-from . crews.criticCrew import CriticCrew, CriticFeedback
 from . crews.reportBannerCrew import ReportBannerCrew
 
 import asyncio
@@ -27,8 +26,6 @@ class EmergingTechnologyFlowState(BaseModel):
     report:Optional[ResearchReport] = Field(default=None, description="Report generated")
     conversationHistory:Optional[str] = Field(default=None, description="Conversation History")
     preferences:Optional[str] = Field(default=None, description="User Preferences")
-    criticFeedback:Optional[CriticFeedback] = Field(default=None, description="Feedback from the criticAgent")
-    feedbackIter:Optional[int] = Field(default=0, description="Iteration no. of the feedback")
     banners:Optional[list[str]] = Field(default=None, description="Array of banner images for each section")
 
 # Flow taking care of user prompt
@@ -74,8 +71,6 @@ class EmergingTechnologyFlow(Flow[EmergingTechnologyFlowState]):
             'current_year': str(datetime.now().year),
             'style': self.state.intent.style,
             'prompt': self.state.prompt,
-            'qualityFeedback': self.state.criticFeedback.qualityFeedback if self.state.criticFeedback else "",
-            'alreadyGeneratedReport': self.state.response if self.state.response else ""
         }
         self.state.report = Emergingtechnologyresearch(self.stepCallback).crew().kickoff(inputs=inputs).pydantic
 
@@ -103,7 +98,7 @@ class EmergingTechnologyFlow(Flow[EmergingTechnologyFlowState]):
     @listen(generateBannerImages)
     def generateReport(self):
         if self.state.report:
-            response = f"# Research Report on: {self.state.intent.topic} after {self.state.feedbackIter} iterations\n"
+            response = f"# Research Report on: {self.state.intent.topic}\n"
             for i, section in enumerate(self.state.report.sections,0):
                 response += f"## {section.title} \n\n"
                 if (self.state.banners != None and self.state.banners[i] != None):
@@ -119,23 +114,6 @@ class EmergingTechnologyFlow(Flow[EmergingTechnologyFlowState]):
             response += f"{self.state.report.conclusion} \n"
             self.state.response = response
 
-    @router(generateReport)
-    def feedback(self):
-        if self.state.feedbackIter >= 2 or os.getenv('CRITIC_AGENT') != 'TRUE':
-            return "ResearchComplete"
-
-        inputs = {
-            'prompt': self.state.prompt,
-            'style': self.state.intent.style,
-            'report': self.state.response
-        }
-        self.state.criticFeedback = CriticCrew(self.stepCallback).crew().kickoff(inputs=inputs).pydantic
-        self.state.feedbackIter += 1
-        if self.state.criticFeedback.approved == True:
-            return "ResearchComplete"
-        else:
-            return "EmergingTechnologyResearch"
-
     @listen("EmergingTechnologyFollowup")
     def followup(self):
         inputs = {
@@ -146,6 +124,6 @@ class EmergingTechnologyFlow(Flow[EmergingTechnologyFlowState]):
         }
         self.state.response = FollowupQuestionCrew(self.stepCallback).crew().kickoff(inputs=inputs).raw
 
-    @listen(or_("ResearchComplete", followup))
+    @listen(or_(generateReport, followup))
     def finish(self):
         return self.state.response
