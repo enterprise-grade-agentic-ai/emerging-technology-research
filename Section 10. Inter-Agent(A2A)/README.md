@@ -1,9 +1,9 @@
-# Section 11. Agent Security
+# 🤝 Section 11. Inter-Agent (A2A)
 
-## Purpose
-This section focuses on Agent Security. Demoes included avoiding Agent Goal Hijack by implementing Dual Agent Pattern. As part of the demoes, we also worked on avoiding Identity and Privilege Abuse.
+## 🎯 Purpose
+This sections focuses on A2A (Agent-to-Agent) communication. Demoes in the course included exposing the emerging technology application using A2A, exploring it with the A2A inspector tool, and integrating it for use by a new LMS(Learning Management System) virtual assistant.
 
-## Installation
+## 🛠️ Installation
 This project uses [UV](https://docs.astral.sh/uv/) for dependency management and package handling, offering a seamless setup and execution experience.
 
 First, if you haven't already, install uv:
@@ -16,7 +16,7 @@ Next, navigate to your project directory and install the dependencies:
 uv sync
 ```
 
-## Pre-requisites
+## ✅ Pre-requisites
 #### AWS CLI Setup
 If not already done in the previous sections, you may follow below steps to setup AWS CLI:
 1. Install AWS CLI using [User Guide](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
@@ -117,25 +117,26 @@ API key: <Tavily API Key created in previous step>
 MCP_GATEWAY_URL=<Gateway resource URL>
 ```
 
-#### 🆕 MongoDB Setup (Local only)
-This step is new for this repository. We will store published report in MongoDB. And try to reproduce `Identity and Privilege Abuse` attack and then fix it.
+#### 🆕 A2A inspector
+This step is new to this repository. In the step, you will need to setup A2A Inspector. The A2A Inspector is a web-based tool designed to help developers inspect, debug, and validate servers that implement the A2A (Agent2Agent) protocol.
 
-```bash
-docker run -d -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=password -p 27017:27017 mongo
-```
+You may setup A2A inspector from either of the below two sources. The `readme.md` of the repo provides installation steps. 
+1. [Official A2A inspector repo](https://github.com/a2aproject/a2a-inspector)
+2. [Forked repo containing multi-turn support](https://github.com/enterprise-grade-agentic-ai/a2a-inspector)
 
-## Running the Project
+
+## 🚀 Running the Project
 :memo: It is a good idea to observe every execution trace in Langfuse. If LLM call isn't visible in the trace, try seeing the output of the agents in agent spans. It should have response returned from LLMs. 
 
-To launch the chat application, you may run below command on the terminal.
-
+Code for A2A server is in the folder `src/emergingtechnologyresearch/a2a`. You may explore the folder for the implementation used in the demo. You may follow below steps to explore A2A:
+1. Run the A2A server using the below command:
 ```bash
-ACTOR_ID="learner1" uv run python -m src.emergingtechnologyresearch.chat
+uv run python -m src.emergingtechnologyresearch.a2a.a2aServer
 ```
+2. Run A2A inspector and launch A2A client in a browser using URL: `http://127.0.0.1:5001`.
+3. In the inspector, try to connect to A2A server by entering Agent Card URL as `localhost:9000/.well-known/agent.json`. Try to go through Agent Card after the connection is successful. 
+4. Now you may start interacting with the A2A server using A2A inspector. For each input or output, you may click on the message to see details like `contextId`, `taskId`, etc 
+5. Do try to explore multi-turn conversation where the user asks agentic application to research on a topic, without providing qualification and experience. And agentic application responds with input required. User would need to respond with just qualification and experience after switching on the `multi-turn` flag. 
+6. To challenge yourself you may create a client agentic application in CrewAI and let it interact with the emerging technology research using A2A. In the demos we built a demo LMS application. You may refer to the [relevant CrewAI documentation](https://docs.crewai.com/en/learn/a2a-agent-delegation) for the same
 
-You may do following steps:
-1. You may ask chat application to research on a specific topic and generate a report
-2. You may ask followup questions on already researched topic
-3. You may ask followup question to get list of reports published
-4. Then you may ask followup question to get list of reports published by other actors with a specific actor ID. It will return the reports published by other users. Hence reproducing the Identity and Privilege abuse. You may uncomment line #26 in `publishedTopicsTool.py` to fix the issue. 
-
+**Happy Learning! 🎉🤖**

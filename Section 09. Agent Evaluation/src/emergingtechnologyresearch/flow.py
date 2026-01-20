@@ -8,6 +8,7 @@ import os
 from pydantic import BaseModel, Field
 
 from . utils.memoryUtils import MemoryUtils
+from . utils.publishedReportUtils import PublishedReportUtils
 
 from . crews.followupCrew import FollowupQuestionCrew
 from . crews.intentCrew import Intent, PromptIntent, IntentAnalyzer
@@ -143,6 +144,10 @@ class EmergingTechnologyFlow(Flow[EmergingTechnologyFlowState]):
         else:
             return "EmergingTechnologyResearch"
 
+    @listen("ResearchComplete")
+    def publishReport(self):
+        PublishedReportUtils().publishReport(self.state.actorId, self.state.intent.topic,  self.state.response)
+        
     @listen("EmergingTechnologyFollowup")
     def followup(self):
         inputs = {
@@ -157,6 +162,6 @@ class EmergingTechnologyFlow(Flow[EmergingTechnologyFlowState]):
     def userProfileIsRequired(self):
         return "UserProfileIsRequired"
 
-    @listen(or_("ResearchComplete", followup))
+    @listen(or_(publishReport, followup))
     def finish(self):
         return self.state.response
