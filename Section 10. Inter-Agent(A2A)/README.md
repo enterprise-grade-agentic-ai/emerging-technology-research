@@ -1,4 +1,4 @@
-# 🤝 Section 11. Inter-Agent (A2A)
+# 🤝 Section 10. Inter-Agent (A2A)
 
 ## 🎯 Purpose
 This sections focuses on A2A (Agent-to-Agent) communication. Demoes in the course included exposing the emerging technology application using A2A, exploring it with the A2A inspector tool, and integrating it for use by a new LMS(Learning Management System) virtual assistant.
