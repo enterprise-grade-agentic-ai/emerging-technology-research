@@ -2,14 +2,14 @@
 
 ## 🎯 Purpose
 
-This repository contains code examples, demonstrations, and reference implementations used in the online course with the title - **End-to-End Agentic AI: From Concepts to Production**. This repository is designed to help learners who may need reference implementation for course assignments, or want to review working examples of the concepts covered in the course.
+This repository contains code examples, demonstrations, and reference implementations used in the online course with the title - **End-to-End Production Grade Agentic AI: Concepts to Hands-on**. This repository is designed to help learners who may need reference implementation for course assignments, or want to review working examples of the concepts covered in the course.
 
 **If you're stuck on any assignment, feel free to refer to the relevant section folder for guidance!**
 
 ## 📘 Course Information
 
 ### 🎓 Udemy Course
-**[End-to-End Agentic AI: From Concepts to Production](https://www.udemy.com/course/production-grade-agentic-ai/?referralCode=CB52FBBC1A24BDFBA1BA)**
+**[End-to-End Production Grade Agentic AI: Concepts to Hands-on](https://www.udemy.com/course/production-grade-agentic-ai/?referralCode=CB52FBBC1A24BDFBA1BA)**
 
 ### 📺 Course Overview Video
 
@@ -21,16 +21,16 @@ This repository contains code examples, demonstrations, and reference implementa
 
 ## 📂 Repository Structure
 
-This repository is organized by course sections, with each relevant section having its own dedicated folder. Each folder contains relevant code examples, demonstrations, and documentation for that specific section of the course. Each section is built on top of previous sections. Because of this, you will see code from the previous sections as well in the section specific folders. 
+This repository is organized by course sections, with each relevant section having its own dedicated folder. Each folder contains relevant code examples, demonstrations, and documentation for that specific section of the course.
 
 ## ⚠️ Important Cost Warning
 
 **Before using any services or resources in this repository, please be aware:**
 
 - **Check costs**: Always review and understand the pricing structure of AWS and other cloud services before deploying or running any code examples.
-- **Monitor usage**: Continuously monitor your service usage and costs while using these examples, especially for services that charge based on usage (e.g., AWS Lambda, MCP Gateway, Bedrock, etc.).
+- **Monitor usage**: Continuously monitor your service usage and costs while using these examples, especially for services that charge based on usage (e.g., AWS Lambda, AWS Cognito, AWS Bedrock, MCP Gateway, etc.).
 - **Clean up resources**: Ensure you delete or stop all resources created during testing or learning to avoid unexpected charges.
-- **No liability**: The author of this repository is **not responsible** for any unwanted bills, charges, or costs incurred from AWS or other cloud service providers. You are solely responsible for managing your own cloud resources and associated costs.
+- **No liability**: The author has tried to demonstrate the usage of technologies which doesn't cost with free tier or cost less as compared to others. But the author of this repository is **not responsible** for any unwanted bills, charges, or costs incurred from AWS or other cloud service providers. You are solely responsible for managing your own cloud resources and associated costs.
 
 ## 🤝 Contributing
 
