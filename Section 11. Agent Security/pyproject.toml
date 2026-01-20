@@ -3,7 +3,7 @@ name = "emergingtechnologyresearch"
 version = "0.1.0"
 description = "emergingTechnologyResearch using crewAI"
 authors = [
-    { name = "Your Name", email = "you@example.com" },
+    { name = "DeepLens Tech", email = "support@deeplens.tech" },
 ]
 requires-python = ">=3.10,<3.14"
 dependencies = [
@@ -18,6 +18,9 @@ dependencies = [
     "openinference-instrumentation-crewai>=0.1.13",
     "openinference-instrumentation-litellm>=0.1.25",
     "openlit>=1.36.1",
+    "opentelemetry-api>=1.39.1",
+    "opentelemetry-exporter-otlp>=1.39.1",
+    "opentelemetry-sdk>=1.39.1",
     "pymongo>=4.15.5",
     "rich>=14.2.0",
     "streamlit>=1.50.0",

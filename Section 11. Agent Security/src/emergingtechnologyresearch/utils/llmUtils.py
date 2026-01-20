@@ -16,4 +16,4 @@ def getLlm()->Union[str, InstanceOf[BaseLLM], Any]:
             api_key=os.getenv('OPENAI_API_KEY')
         )
     else:
-        return 'bedrock/us.amazon.nova-pro-v1:0'
+        return LLM('bedrock/us.amazon.nova-pro-v1:0')

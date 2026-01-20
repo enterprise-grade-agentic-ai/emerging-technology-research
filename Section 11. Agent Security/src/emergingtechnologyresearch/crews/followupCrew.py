@@ -3,7 +3,7 @@ from crewai.project import CrewBase, agent, crew, task
 from crewai.agents.agent_builder.base_agent import BaseAgent
 from typing import Any, List
 from ..utils.llmUtils import getLlm, getVerbose
-from ..tools.published_topics_tool import PublishedTopicsTool
+from ..tools.publishedTopicsTool import PublishedTopicsTool
 
 @CrewBase
 class FollowupQuestionCrew():

@@ -2,7 +2,7 @@ from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
 from crewai.agents.agent_builder.base_agent import BaseAgent
 from typing import Any, List
-from ..tools.dalle_tool import DallETool
+from ..tools.dalleTool import DallETool
 from pydantic import BaseModel, Field
 from ..utils.llmUtils import getLlm, getVerbose
 
@@ -21,10 +21,10 @@ class ReportBannerCrew():
         self.stepCallback = stepCallback
     
     def getTools(self):
-        dalle_tool = DallETool(model="dall-e-2",
+        dalleTool = DallETool(model="dall-e-2",
             size="256x256",
             n=1)
-        return [dalle_tool]
+        return [dalleTool]
 
     @agent
     def banner_creator(self) -> Agent:

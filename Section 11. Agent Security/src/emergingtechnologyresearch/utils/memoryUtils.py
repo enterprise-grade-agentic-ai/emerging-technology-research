@@ -1,7 +1,7 @@
 import itertools
 import json
 import os
-from typing import Any, Dict, List
+from typing import List
 from bedrock_agentcore.memory import MemoryClient
 
 class MemoryUtils:

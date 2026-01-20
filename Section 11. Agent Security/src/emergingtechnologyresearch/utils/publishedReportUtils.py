@@ -1,8 +1,6 @@
 import os
 from datetime import datetime
 
-from crewai.tools import BaseTool, EnvVar
-from pydantic import BaseModel, Field
 from pymongo import MongoClient
 from pymongo.errors import ConnectionFailure, PyMongoError
 
@@ -23,8 +21,6 @@ class PublishedReportUtils:
             client = self._get_mongodb_client()
             
             # Get database name from environment variable or use default
-            # If MONGODB_URL contains a database, it will be used by the client
-            # Otherwise, use MONGODB_DATABASE env var or default to 'default'
             database_name = os.getenv("MONGODB_DATABASE", "default")
             db = client[database_name]
             
@@ -63,8 +59,6 @@ class PublishedReportUtils:
             client = self._get_mongodb_client()
             
             # Get database name from environment variable or use default
-            # If MONGODB_URL contains a database, it will be used by the client
-            # Otherwise, use MONGODB_DATABASE env var or default to 'default'
             database_name = os.getenv("MONGODB_DATABASE", "default")
             db = client[database_name]
             

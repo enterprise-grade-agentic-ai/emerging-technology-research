@@ -3,7 +3,6 @@ from . env import populateEnvWithSecrets
 from .. crews.orchestratorWorkerCrew import OrchestratorWorkerCrew
 from .. flow import EmergingTechnologyFlow
 from . memoryUtils import MemoryUtils
-import os
 from .. flow import UserProfileIsRequired
 
 async def executeApp(inputs, step_callback = None)->str:

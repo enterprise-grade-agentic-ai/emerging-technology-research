@@ -39,7 +39,7 @@ async def main():
         }
         response = ""
         #Execute the crew
-        with langfuse.start_as_current_observation(as_type="span", name="emerging-technology-research-trace"):
+        with langfuse.start_as_current_span(name="emerging-technology-research-trace"):
             try:   
                 response = await executeApp(inputs)
             except UserProfileIsRequired as e:
@@ -48,7 +48,7 @@ async def main():
                 response = f"An error occurred while running the crew: {e}"
             finally:
                 langfuse.update_current_trace(input=inputs, output=response)
-                langfuse.flush()
+        langfuse.flush()
         print(colored(f"Assistant:",'blue'))
         console = Console()
         console.print(Markdown(response))
