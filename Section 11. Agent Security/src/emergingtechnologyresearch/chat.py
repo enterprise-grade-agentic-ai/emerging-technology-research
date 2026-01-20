@@ -8,7 +8,6 @@ import uuid
 import asyncio
 from rich.console import Console
 from rich.markdown import Markdown
-from . flow import UserProfileIsRequired
 
 # Step1: Populate environment variables from AWS secrets manager
 populateEnvWithSecrets()
@@ -42,8 +41,6 @@ async def main():
         with langfuse.start_as_current_span(name="emerging-technology-research-trace"):
             try:   
                 response = await executeApp(inputs)
-            except UserProfileIsRequired as e:
-                response = e.message
             except Exception as e:
                 response = f"An error occurred while running the crew: {e}"
             finally:

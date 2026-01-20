@@ -11,7 +11,6 @@ from pydantic import BaseModel, Field
 class Intent(Enum):
     EMERGING_TECHNOLOGY_RESEARCH = "EMERGING_TECHNOLOGY_RESEARCH"
     EMERGING_TECHNOLOGY_FOLLOW_UP_QUERY = "EMERGING_TECHNOLOGY_FOLLOW_UP_QUERY"
-    USER_PROFILE_INFORMATION_IS_REQUIRED = "USER_PROFILE_INFORMATION_IS_REQUIRED"
 
 class PromptIntent(BaseModel):
    intent: Intent = Field(description="Intent of the Prompt")

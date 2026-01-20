@@ -18,11 +18,6 @@ from . crews.reportBannerCrew import ReportBannerCrew
 
 import asyncio
 
-class UserProfileIsRequired(Exception):
-    message:str = "User profile information like qualification and experience is required to proceed further"
-    def __init__(self):
-        super().__init__(self.message)
-
 # Pydantic model for the flow state
 class EmergingTechnologyFlowState(BaseModel):
     prompt:Optional[str] = Field(default=None, description="User prompt")
@@ -72,8 +67,6 @@ class EmergingTechnologyFlow(Flow[EmergingTechnologyFlowState]):
                 return "EmergingTechnologyResearch"
             case Intent.EMERGING_TECHNOLOGY_FOLLOW_UP_QUERY:
                 return "EmergingTechnologyFollowup"
-            case Intent.USER_PROFILE_INFORMATION_IS_REQUIRED:
-                return "UserProfileIsRequired"
 
     @listen("EmergingTechnologyResearch")
     def research(self):
@@ -157,10 +150,6 @@ class EmergingTechnologyFlow(Flow[EmergingTechnologyFlowState]):
             'actorId': self.state.actorId
         }
         self.state.response = FollowupQuestionCrew(self.stepCallback).crew().kickoff(inputs=inputs).raw
-
-    @listen("UserProfileIsRequired")
-    def userProfileIsRequired(self):
-        return "UserProfileIsRequired"
 
     @listen(or_(publishReport, followup))
     def finish(self):

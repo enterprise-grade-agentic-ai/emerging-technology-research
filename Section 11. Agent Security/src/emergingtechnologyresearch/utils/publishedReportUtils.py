@@ -70,6 +70,7 @@ class PublishedReportUtils:
                 {"actor_id": actor_id}
             ).sort("created_at", -1).limit(10)
             
+            print (documents)
             # Convert documents to list
             result_list = []
             for doc in documents:

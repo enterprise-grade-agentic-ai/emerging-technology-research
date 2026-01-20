@@ -40,6 +40,8 @@ SECRET_REGION=<AWS region where this secret is created, e.g. us-east-1>
 The code is already in place to load the secrets from this container into environment file. Please note that secrets stored in AWS secrets manager costs. If you wouldn't like to incur that cost, you may set secrets in the local `.env` file. In that case, for security reasons, you should only try out the agentic application on local machine only.
 
 #### OpenAI Setup (Only if using OpenAI models)
+:memo: This repo by default uses Amazon's Nova Pro model. But in my personal experience, OpenAI's gpt models perform better. You may consider setting up OpenAI for this repo if your budget allows.
+
 If not already done in the previous sections, and you would like to use OpenAI models, you may follow below steps.
 1. Generate OpenAI key if you would like to use OpenAI models. This can be done on [OpenAI Platform](https://platform.openai.com/). Please note that using OpenAI models would require minimum payment of $5 to OpenAI.
 2. Set below key in the AWS secret containing secrets. This would be automatically loaded in the environment variables of the application. If you are not using AWS secret and just trying on you local, you may set this in `.env` file. 
