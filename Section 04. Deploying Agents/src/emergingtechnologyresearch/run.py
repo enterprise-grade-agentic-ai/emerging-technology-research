@@ -38,6 +38,5 @@ async def main():
     print(colored(f"Assistant:",'blue'))
     console = Console()
     console.print_json(response)
-        
 if __name__ == "__main__":
     asyncio.run(main())
