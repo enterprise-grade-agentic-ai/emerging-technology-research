@@ -4,7 +4,7 @@
 
 This repository contains code examples, demonstrations, and reference implementations used in the online course with the title - **End-to-End Production Grade Agentic AI: Concepts to Hands-on**. This repository is designed to help learners who may need reference implementation for course assignments, or want to review working examples of the concepts covered in the course.
 
-**If you're stuck on any assignment, feel free to refer to the relevant section folder for guidance!**
+**If you're stuck on any assignment, feel free to refer to the relevant section folder for guidance! If that also doesn't help, please feel free to reach out to the instructor on Udemy**
 
 ## 📘 Course Information
 
