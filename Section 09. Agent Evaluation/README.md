@@ -17,6 +17,7 @@ uv sync
 ```
 
 ## ✅ Pre-requisites
+___Instead of automating the pre-requisites, most of the steps are kept as manual. This has been intentionally done so that the learner can grasp the concepts in more detail.___
 ### AWS CLI Setup
 ___If not already done in the previous sections___, you may follow below steps to setup AWS CLI:
 1. Install AWS CLI using [User Guide](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
