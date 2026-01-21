@@ -1,7 +1,7 @@
 # 🧩 Section 08. Agentic Patterns
 
 ## 🎯 Purpose
-This sections focuses on Agentic Patterns . Demoes in the course included `Parallel Execution` pattern and `Orchestrator Worker` pattern. This repo contains the code used for the demos.
+This sections focuses on Agentic Patterns . Demos in the course included `Parallel Execution` pattern and `Orchestrator Worker` pattern. This repo contains the code used for the demos.
 
 ## 🛠️ Installation
 This project uses [UV](https://docs.astral.sh/uv/) for dependency management and package handling, offering a seamless setup and execution experience.
@@ -121,14 +121,20 @@ MCP_GATEWAY_URL=<Gateway resource URL>
 :memo: It is a good idea to observe every execution trace in Langfuse. If LLM call isn't visible in the trace, try seeing the output of the agents in agent spans. It should have response returned from LLMs. 
 
 ### Parallel Execution Pattern (for banner creation for each report section)
-Code for banner creation is in `src/emergingtechnologyresearch/flow.py` and `src/emergingtechnologyresearch/crews/reportBannerCrew.py`. To create banner for multiple sections in **parallel**, you may follow below steps:
+Code for banner creation is in `src/emergingtechnologyresearch/flow.py` and `src/emergingtechnologyresearch/crews/reportBannerCrew.py`. To create banner for multiple report sections in **parallel**, you may follow below steps:
 
-1. Run the chat interface using the below command:
+1. Set `GENERATE_BANNERS` as `TRUE` in `.env` file.
+2. **Set `OPENAI_API_KEY` in `.env` file. This is required because for image generation we are using `Dall-E` model, which is hosted in OpenAI platform.**
+3. Run the chat interface using the below command:
 ```bash
 uv run python -m src.emergingtechnologyresearch.chat
 ```
+4. Ask the application to research on a specific topic. Application will generate the report in couple of minutes. In the report generated, there will be a link to the banner image for each section. You may explore those images. 
+5. Explore the execution trace in Langfuse and switch to the timeline view. You will see the banner images generated in parallel.
 
 ### Orchestrator Worker Pattern
-
-
+Code for Orchestrator Worker Pattern is in `src/emergingtechnologyresearch/crews/orchestratorWorkerCrew.py`. You may set `AUTONOMOUS_ORCHESTRATION` as `TRUE` in `.env` file. You may execute the chat application using the below command. Do remember to explore the execution trace in Langfuse after each interaction. Trace will let you observe how CrewManager delegates the tasks to agents.
+```bash
+uv run python -m src.emergingtechnologyresearch.chat
+```
 **Happy Learning! 🎉🤖**

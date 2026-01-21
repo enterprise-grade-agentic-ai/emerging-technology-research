@@ -1,7 +1,7 @@
 # 📊 Section 09. Agent Evaluation
 
 ## 🎯 Purpose
-This sections focuses on Agent Evaluation . Demoes in the course included online evaluation using `LLM as a judge` as well as `Human Annotation`. There was a demo for inline evaluation as well which was implemented using `Critic Agent` Pattern. This repo is more about `Critic Agent` pattern and its implementation.
+This sections focuses on Agent Evaluation . Demos in the course included online evaluation using `LLM as a judge` as well as `Human Annotation`. There was a demo for inline evaluation as well which was implemented using `Critic Agent` Pattern. This repo is more about `Critic Agent` pattern and its implementation.
 
 ## 🛠️ Installation
 This project uses [UV](https://docs.astral.sh/uv/) for dependency management and package handling, offering a seamless setup and execution experience.
