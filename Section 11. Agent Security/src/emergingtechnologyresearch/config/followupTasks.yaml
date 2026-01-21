@@ -6,7 +6,7 @@ followup_question_task:
     User conversation history: {history}
     User ActorId: {actorId}
     Analyse the user prompt - {prompt}. After that answer the question based on the already conducted research
-    aligning with the user prompt. But if the user is asking explictly only for the reports already published
+    aligning with the user prompt. But if the user is asking explicitly only for the reports already published
     and then use appropriate published reports tool, and don't consider conversation history in that case. 
   expected_output: >
     Output is supposed to be a string

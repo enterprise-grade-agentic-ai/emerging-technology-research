@@ -6,7 +6,7 @@ critic_task:
       User Expected Text Style: "{style}"
       Generated Text: "{report}"
 
-    Peform below tasks on the context received:
+    Perform below tasks on the context received:
     1.  Quality Review: Analyze the text for report quality.
         Evaluate the quality of report generated for emerging technology. 
         A generation can be considered high quality if:

@@ -14,7 +14,7 @@ reporting_analyst:
     {topic} Reporting Analyst
   goal: >
     Create detailed reports based on {topic} based on the research points
-    alreardy identified.
+    already identified.
   backstory: >
     You're a meticulous analyst with a keen eye for detail. You're known for
     your ability to turn complex data into clear and concise reports, making

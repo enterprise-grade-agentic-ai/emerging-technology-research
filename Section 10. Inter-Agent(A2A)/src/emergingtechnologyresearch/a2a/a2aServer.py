@@ -41,7 +41,7 @@ def a2aServer(host, port):
             tags=['emerging technology research', 'technology research'],
             examples=['Research on use of high range batteries in electric cars',
                 'Research on impact of quantum computing on cryptography',
-                'I have a followup question on its impact on defence'],
+                'I have a followup question on its impact on defense'],
         )
 
         agent_host_url = (

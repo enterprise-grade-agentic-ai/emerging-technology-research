@@ -97,7 +97,7 @@ orchestrator_task:
       Query: What if I loose the power while on the road?:
       Plan Steps:
         1. Delegate to Prompt Intent Analyzer Agent by providing user prompt.
-           Since the user is asking for a follow up question and not mentionining
+           Since the user is asking for a follow up question and not mentioning
            about researching on a topic, agent will
            identify intent as EMERGING_TECHNOLOGY_FOLLOW_UP_QUERY. Agent will 
            not identify any research topic, since it is a followup question.
@@ -123,7 +123,7 @@ orchestrator_task:
     Plan Step by Step and make sure to delegate to right agents at right place
     based on the provided examples.
   expected_output: >
-    Output in structured format. Explictly mention in the ouput that the answer
+    Output in structured format. explicitly mention in the output that the answer
     is for a research report, or an answer to a followup question. 
     If the answer is for a research report, the output will be in markdown format
     containing title, list of sections, and conclusion of the report. Each section will
