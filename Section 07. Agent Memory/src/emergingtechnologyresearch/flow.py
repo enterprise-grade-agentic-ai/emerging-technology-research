@@ -3,18 +3,11 @@ from datetime import datetime
 from crewai.flow import or_
 from crewai.flow.flow import Flow, listen, router, start
 from typing import Any,Optional
-import os
-
 from pydantic import BaseModel, Field
-
 from . utils.memoryUtils import MemoryUtils
-
 from . crews.followupCrew import FollowupQuestionCrew
 from . crews.intentCrew import Intent, PromptIntent, IntentAnalyzer
 from . crews.researchCrew import Emergingtechnologyresearch, ResearchReport
-from . crews.reportBannerCrew import ReportBannerCrew
-
-import asyncio
 
 # Pydantic model for the flow state
 class EmergingTechnologyFlowState(BaseModel):
@@ -26,7 +19,6 @@ class EmergingTechnologyFlowState(BaseModel):
     report:Optional[ResearchReport] = Field(default=None, description="Report generated")
     conversationHistory:Optional[str] = Field(default=None, description="Conversation History")
     preferences:Optional[str] = Field(default=None, description="User Preferences")
-    banners:Optional[list[str]] = Field(default=None, description="Array of banner images for each section")
 
 # Flow taking care of user prompt
 class EmergingTechnologyFlow(Flow[EmergingTechnologyFlowState]):
@@ -75,34 +67,11 @@ class EmergingTechnologyFlow(Flow[EmergingTechnologyFlowState]):
         self.state.report = Emergingtechnologyresearch(self.stepCallback).crew().kickoff(inputs=inputs).pydantic
 
     @listen(research)
-    async def generateBannerImages(self):
-        if (os.getenv('GENERATE_BANNERS') == "TRUE" and os.getenv("OPENAI_API_KEY") != None 
-                and self.state.report != None and self.state.report.sections != None):
-            results = []
-            for section in self.state.report.sections:
-                inputs = {
-                    'topic': section.title,
-                    'overview': section.overview,
-                    'style': self.state.intent.style
-                }
-                result = ReportBannerCrew(self.stepCallback).crew().kickoff_async(inputs=inputs)
-                results.append(result)
-            
-            results = await asyncio.gather(*results)
-        
-            banners = []
-            for result in results:
-                banners.append(result.pydantic.url)
-            self.state.banners = banners
-
-    @listen(generateBannerImages)
     def generateReport(self):
         if self.state.report:
             response = f"# Research Report on: {self.state.intent.topic}\n"
             for i, section in enumerate(self.state.report.sections,0):
                 response += f"## {section.title} \n\n"
-                if (self.state.banners != None and self.state.banners[i] != None):
-                    response += f"![Banner]({self.state.banners[i]}) \n\n"
                 response += f"### Overview \n"
                 response += f"{section.overview} \n"
                 response += f"### Key Developments \n"
