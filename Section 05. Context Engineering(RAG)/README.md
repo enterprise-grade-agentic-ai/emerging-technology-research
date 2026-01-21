@@ -1,8 +1,7 @@
 # 📚 Section 05. Context Engineering (RAG)
 
 ## 🎯 Purpose
-## UPDATE IT
-This sections focuses on Integrations using MCP. Demos in the course included making `Tavily web search` tools and `publish to S3` tool available to the agents. These tools were made available through MCP Gateway. This repo contains the code used for the demos.
+This sections focuses on Context Engineering and RAG. Demos in the course included building `AWS Knowledge Base` using S3 as the data source and pinecone vector database as the destination. This AWS Knowledge Base was made available to our CrewAI application using Agentic RAG. This repo contains the code used for the demos.
 
 ## 🛠️ Installation
 This project uses [UV](https://docs.astral.sh/uv/) for dependency management and package handling, offering a seamless setup and execution experience.
@@ -79,6 +78,7 @@ ___This is a new pre-requisite introduced in this section___. You may setup Pine
 6. You may copy the ARN of this secret. This will be required later.
 
 ### 🆕 Setup AWS S3 bucket containing knowledge documents (Will act as data source for AWS Knowledge Base)
+___This is a new pre-requisite introduced in this section___. You may setup AWS S3 bucket as per the steps below:
 1. Create a S3 bucket which will contain the PDFs which will act as a data source for the knowledge base.
 2. Create a folder with the name `rag` inside the bucket
 3. Copy the files in `miscellaneous/documentsForRAG` folder in this repo to the newly created folder in the previous step.
@@ -111,9 +111,12 @@ AWS_KNOWLEDGE_BASE_ID=<Knowledge Base ID as copied in the previous step>
 ## 🚀 Running the Project
 :memo: It is a good idea to observe every execution trace in Langfuse. If LLM call isn't visible in the trace, try seeing the output of the agents in agent spans. It should have response returned from LLMs. 
 
+To see Agentic RAG in action, you may use below steps:
 1. Run the CLI interface using the below command:
 ```bash
 uv run python -m src.emergingtechnologyresearch.run
 ```
+2. When asked by CLI, you may try out a topic for which we have data in AWS Knowledge Base, e.g. Quantum Computing. Post the execution you may explore the execution trace in Langfuse.
+3. You may now re-run the CLI interface, and try out a topic for which we do not have data in AWS Knowledge Base, e.g. Satellite Technology. Post the execution you may explore the execution trace in Langfuse, and also explore if there are any differences from the previous execution.
 
 **Happy Learning! 🎉🤖**

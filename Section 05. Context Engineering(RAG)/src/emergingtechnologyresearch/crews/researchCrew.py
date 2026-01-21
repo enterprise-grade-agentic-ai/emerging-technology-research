@@ -1,13 +1,14 @@
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
 from crewai.agents.agent_builder.base_agent import BaseAgent
-from ..utils.mcpUtils import McpUtils
 from ..utils.llmUtils import getLlm, getVerbose
 from typing import (
     Any,
     List
 )
 from pydantic import BaseModel, Field
+from crewai_tools.aws.bedrock.knowledge_base.retriever_tool import BedrockKBRetrieverTool
+import os
 
 class Section(BaseModel):
    title: str = Field(description="Title of the section")
@@ -32,12 +33,18 @@ class Emergingtechnologyresearch():
     agents: List[BaseAgent]
     tasks: List[Task]
     stepCallback:Any=None
+    kb_tool:BedrockKBRetrieverTool
 
     def __init__(self, stepCallback=None):
         self.stepCallback = stepCallback
+        # Initialize the tool
+        self.kb_tool = BedrockKBRetrieverTool(
+            knowledge_base_id=os.getenv('AWS_KNOWLEDGE_BASE_ID'),
+            number_of_results=5
+        )
     
     def getTools(self):
-        return McpUtils().getTools()
+        return [self.kb_tool]
 
     @agent
     def researcher(self) -> Agent:
