@@ -172,6 +172,7 @@ After playing around with MCP Inspector, now is the time to execute its integrat
 uv run python -m src.emergingtechnologyresearch.run
 ```
 2. CLI will ask you for the research topic. You may enter emerging technology of your choice. The execution will take around a minute. If it is successful, it will return the S3 object URL. You may explore the S3 object in AWS S3 console. And explore the JSON created by this agentic application.
+3. Do remember to explore the execution trace in Langfuse. This will give you fair idea on how are tools picked and executed.
 
 
 **Happy Learning! 🎉🤖**
