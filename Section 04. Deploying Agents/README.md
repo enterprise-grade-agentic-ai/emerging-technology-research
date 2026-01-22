@@ -30,7 +30,7 @@ aws configure
 Note: The AWS key or user used in `aws configure` command should have read and write permissions for AWS Bedrock, AgentCore Runtime, AgentCore Memory, AgentCore MCP, AWS Cognito, and AWS Secrets Manager.
 
 ### Env file setup
-___If not already done in the previous sections___, you may copy `.env.template` as `.env` and populate it as mentioned in the subsequent sections.
+___If not already done in the previous sections___, you may copy `.env.template` as `.env` and populate it as mentioned in the subsequent steps.
 
 ### AWS Secrets Manager Setup (Optional)
 We are talking about production grade agentic AI. Which means we shouldn't have secrets sprinkled in the local environment file or code. To ensure this security best practice, ideally you should create a secret in AWS secrets manager of type `Other type of secret`. You can populate secrets like `OpenAI key`, `Langfuse private key` in this container secret as key value pair. Key is the secret name, and value is the secret value. You needn't populate secrets in it as of now. AWS might stop you from saving the secret without any key value. You may save a dummy key value just to proceed.
@@ -67,11 +67,20 @@ ___This is a new pre-requisite introduced in this section___. You may setup cogn
 ```bash
 sh miscellaneous/cognitoSetup.sh 
 ```
-Please note down Discovery URL as printed on the terminal.
+Please note down `Discovery URL` and `Client ID` as printed on the terminal.
 
 ### 🆕 AWS AgentCore Runtime Setup
+```bash
+sh agentCoreConfigure.sh "https://cognito-idp.us-east-1.amazonaws.com/us-east-1_9spZJFsul/.well-known/openid-configuration" "1a25g4o0p01fb2vh7r1700nnrv"
+```
 
+```bash
+sh agentCoreDeploy.sh
+```
 
+```bash
+sh agentCoreInvoke.sh "1a25g4o0p01fb2vh7r1700nnrv" "Satellite Technology"
+```
 ## 🚀 Running the Project
 :memo: It is a good idea to observe every execution trace in Langfuse. If LLM call isn't visible in the trace, try seeing the output of the agents in agent spans. It should have response returned from LLMs. 
 

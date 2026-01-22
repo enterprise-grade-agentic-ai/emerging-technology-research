@@ -27,4 +27,9 @@ fi
 uv sync
 source .venv/bin/activate
 uv pip freeze --exclude-editable > requirements.txt
-agentcore configure --region us-east-1 --entrypoint src/emergingtechnologyresearch/agentCoreHandler.py --name emergingtechnologyresearch --requirements-file requirements.txt --protocol HTTP --verbose --non-interactive --authorizer-config '{"customJWTAuthorizer": {"discoveryUrl": "${1}","allowedClients": ["${2}"]}}'
+authConfiguration='{"customJWTAuthorizer": {"discoveryUrl": "'
+authConfiguration+="${1}"
+authConfiguration+='","allowedClients": ["'
+authConfiguration+="${2}"
+authConfiguration+='"]}}'
+agentcore configure --region us-east-1 --entrypoint src/emergingtechnologyresearch/agentCoreHandler.py --name emergingtechnologyresearch --requirements-file requirements.txt --protocol HTTP --verbose --non-interactive --authorizer-config "${authConfiguration}" --container-runtime docker

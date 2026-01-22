@@ -210,3 +210,7 @@ __marimo__/
 
 # MacOS
 .DS_Store
+
+# AWS AgentCore
+.bedrock_agentcore.yaml
+.bedrock_agentcore/

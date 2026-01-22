@@ -7,8 +7,6 @@ authors = [
 ]
 requires-python = ">=3.10,<3.14"
 dependencies = [
-    "bedrock-agentcore>=0.1.5",
-    "bedrock-agentcore-starter-toolkit>=0.1.14",
     "boto3>=1.40.35",
     "crewai[tools]>=1.6.1",
     "langfuse>=3.5.0",

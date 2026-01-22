@@ -10,11 +10,10 @@ if [ ! -f "$FILE" ]; then
     exit 1
 fi
 
-command="agentcore launch" 
+command="agentcore launch --auto-update-on-conflict" 
 cat ${FILE} | (while read line || [[ -n $line ]];
 do
    # echo ${line}
    command+=" --env ${line}"
    # echo "${command}"
 done && eval $command)
-# echo "$command"

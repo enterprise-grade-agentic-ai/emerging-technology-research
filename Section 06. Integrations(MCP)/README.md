@@ -29,7 +29,7 @@ aws configure
 Note: The AWS key or user used in `aws configure` command should have read and write permissions for AWS Bedrock, AgentCore Runtime, AgentCore Memory, AgentCore MCP, AWS Cognito, and AWS Secrets Manager.
 
 ### Env file setup
-___If not already done in the previous sections___, you may copy `.env.template` as `.env` and populate it as mentioned in the subsequent sections.
+___If not already done in the previous sections___, you may copy `.env.template` as `.env` and populate it as mentioned in the subsequent steps.
 
 ### AWS Secrets Manager Setup (Optional)
 We are talking about production grade agentic AI. Which means we shouldn't have secrets sprinkled in the local environment file or code. To ensure this security best practice, ideally you should create a secret in AWS secrets manager of type `Other type of secret`. You can populate secrets like `OpenAI key`, `Langfuse private key` in this container secret as key value pair. Key is the secret name, and value is the secret value. You needn't populate secrets in it as of now. AWS might stop you from saving the secret without any key value. You may save a dummy key value just to proceed.

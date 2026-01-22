@@ -1,24 +1,24 @@
-#!/usr/bin/env python
-
-#setup entry point for agentcore
 from bedrock_agentcore import BedrockAgentCoreApp
+from datetime import datetime
+from . crews.researchCrew import Emergingtechnologyresearch
+from . utils.env import populateEnvWithSecrets
 
-from . utils.crewUtils import executeApp
-
+# Create AgentCore App
 app = BedrockAgentCoreApp()
+
+# Populate environment variables from AWS secrets manager
+populateEnvWithSecrets()
 
 @app.entrypoint
 def invoke(payload, context):
-  prompt = payload.get("prompt")
-  sessionId = context.session_id if context and context.session_id else payload.get("session_id")
-  actorId = payload.get("actor_id")
+  topic = payload.get("topic")
   inputs = {
-      'prompt': prompt,
-      'sessionId': sessionId,
-      'actorId': actorId
+      'topic': topic,
+      'current_year': str(datetime.now().year)
   }
-  
-  response = executeApp(inputs)
+
+  # Execute the crew
+  response = Emergingtechnologyresearch().crew().kickoff(inputs=inputs).raw
   
   return response
 
