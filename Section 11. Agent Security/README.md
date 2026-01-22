@@ -134,7 +134,7 @@ To launch the chat application, you may run below command on the terminal.
 ACTOR_ID="Gracie" uv run python -m src.emergingtechnologyresearch.chat
 ```
 
-You may do following steps:
+You may proceed based on the below steps:
 1. You may ask chat application to research on a specific topic and generate a report
 2. You may ask followup questions on already researched topic
 3. You may ask followup question to get list of reports published

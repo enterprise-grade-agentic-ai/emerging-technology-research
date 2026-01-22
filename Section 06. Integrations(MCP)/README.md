@@ -151,6 +151,7 @@ First let us explore MCP Gateway directly using MCP Inspector. You may refer to 
 curl -X POST <MCP_TOKEN_URL> -H "Content-Type: application/x-www-form-urlencoded" -d "grant_type=client_credentials&client_id=<MCP_CLIENT_ID>&client_secret=<MCP_CLIENT_SECRET>"
 ```
 This command will return a JSON. You may copy the value of `access_token`. This will be used in subsequent steps to connect to the MCP Gateway.
+
 2. Launch MCP Inspector using the below command on terminal:
 ```bash
 npx @modelcontextprotocol/inspector

@@ -138,6 +138,6 @@ uv run python -m src.emergingtechnologyresearch.a2a.a2aServer
 3. In the inspector, try to connect to A2A server by entering Agent Card URL as `localhost:9000/.well-known/agent.json`. Try to go through Agent Card after the connection is successful. 
 4. Now you may start interacting with the A2A server using A2A inspector. For each input or output, you may click on the message to see details like `contextId`, `taskId`, etc 
 5. Do try to explore multi-turn conversation where the user asks agentic application to research on a topic, without providing qualification and experience. And agentic application responds with input required. User would need to respond with just qualification and experience after switching on the `multi-turn` flag. 
-6. To challenge yourself you may create a client agentic application in CrewAI and let it interact with the emerging technology research using A2A. In the demos we built a demo LMS application. You may refer to the [relevant CrewAI documentation](https://docs.crewai.com/en/learn/a2a-agent-delegation) for the same
+6. To challenge yourself you may create a client agentic application in CrewAI and let it interact with the emerging technology research using A2A. In the demos we built a demo LMS application. You may refer to the [relevant CrewAI documentation](https://docs.crewai.com/en/learn/a2a-agent-delegation) for the same.
 
 **Happy Learning! 🎉🤖**
