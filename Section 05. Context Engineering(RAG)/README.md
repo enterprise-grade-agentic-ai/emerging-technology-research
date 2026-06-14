@@ -72,7 +72,7 @@ ___This is a new pre-requisite introduced in this section___. You may setup Pine
 4. Create an API key in pinecone and copy it for the next step.
 5. Create a secret in AWS secrets manager to store this API key. Please note that this is a mandatory step, since AWS Knowledge Base requires it this way. You may use below attributes while creating the secret:
 * Secret Type: `Other type of secret`
-* Key: `apikey`
+* Key: `apiKey`
 * Value: `<API of pinecone as created in the previous step>`
 * Secret Name: `emergingtechnologyresearch/pinecone`
 6. You may copy the ARN of this secret. This will be required later.
